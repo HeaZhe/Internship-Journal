@@ -191,17 +191,3 @@ git diff
 ### Git Work Flow
 
 clone repository
-
-
-
-股票、FB每天中午一次
-
-新聞中午及晚上12一次
-
-股票
-update 回傳最新值
-history 頁面
-
-新聞
-可能每30分鐘爬一次
-要讓程式在30分鐘後爬第二次時偵測第一次爬到哪篇文章
