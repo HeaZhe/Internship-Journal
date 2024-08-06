@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>app</title>
+</head>
+<body>
+    <script>
+        function showAddModal() {
+            document.getElementById('addModal').style.display = 'block';
+        }
+
+        function hideAddModal() {
+            document.getElementById('addModal').style.display = 'none';
+        }
+
+        function showEditModal(modal_id) {
+            document.getElementById('editModal_'+modal_id).style.display = 'block';
+        }
+
+        function hideEditModal(modal_id) {
+            document.getElementById('editModal_'+modal_id).style.display = 'none';
+        }
+    </script>
+    
+    <button onclick="showAddModal()" style="display:inline;">Add</button>
+
+    <dialog id="addModal" style="display:none;">
+        <form id="addForm" method="POST" action="{% url 'app:add_context' %}">
+            {% csrf_token %}
+            <input type="text" name="context_text" placeholder="Enter context text" required>
+            <button type="submit">Submit</button>
+            <button type="button" onclick="hideAddModal()">Cancel</button>
+        </form>
+    </dialog>
+    </div>
+
+
+    
+    {% if latest_context_list %}
+        <ul>
+        {% for context in latest_context_list %}
+            {% if context.Delete_date == None %}
+            <li>{{ context.Context_text }}　　{{ context.Created_date|date:"Y/m/d H:i:s" }}
+                <form action="{% url 'app:delete_context' context.id %}" method="post" style="display:inline;">
+                    {% csrf_token %}
+                    <button type="submit" style="display:inline;">X</button>
+                </form>
+                <button onclick="showEditModal('{{ context.id }}')" style="display:inline;">edit</button>
+            </li>
+            
+            <dialog id="editModal_{{ context.id }}" style="display:none;">
+                <form id="editForm" action="{% url 'app:edit_context' context.id %}" method="post">
+                    {% csrf_token %}
+                    <input type="hidden" name="id" value="{{ context.id }}">
+                    <input type="text" name="context_text" value="{{ context.Context_text }}">
+                    <button type="submit">Submit</button>
+                    <button type="button" onclick="hideEditModal({{ context.id }})">Cancel</button>
+                </form>
+            </dialog>
+            {% endif %}
+        {% endfor %}
+        </ul>
+    {% endif %}
+</body>
+
+</html>

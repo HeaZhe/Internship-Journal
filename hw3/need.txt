@@ -1,0 +1,43 @@
+1.爬新聞(文字內容)
+title
+content
+datetime = year-mounth-day hour:minute:second
+
+print(title,content,datetime)
+
+2.爬油價(表格數字)
+股名 代號 股價 漲跌 漲跌幅
+
+3.爬動態(動態渲染)
+
+python 爬蟲 script
+
+script - 本地資料庫(pymysql)
+script - line bot
+script - django
+
+wen security
+
+{python, html, react.js}
+
+{react.tsx, next}
+
+先查找有無"查看更多"
+若有責執行點擊查看更多
+若無則直截PRINT(POST.TEXT)
+
+FOR POST_NUMBER IN RANGE(1,5)
+    IF POST_NUMBER NOT IN RANGE
+        滾動到最下方
+        TIME.SLEEP(5)
+        CONTINUE
+
+    FOR POST_NUMBER IN RANGE(1,5)
+        IF POST_NUMBER NOT IN RANGE
+            PRINT('沒有更多貼文')    
+        ELIF SEEMORE IN CHECK_SEEMORE:
+            滾動到CHECK_SEEMORE的中心
+            點擊CHECK_SEEMORE
+            PRINT(POST.TEXT)
+        ELSE
+            直接PRINT(POST.TEXT)
